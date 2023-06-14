@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controllers.CadastroPessoafController;
+
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -14,13 +17,18 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import javax.swing.JPasswordField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class CadastroCliente2 extends JFrame {
+public class CadastroPessoaFisicaView extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtNome;
-	private JTextField txtEmailcnpj;
+	private JTextField txtEmail;
 	private JTextField txtSenha;
+	
+	private CadastroPessoafController cadastroPessoafController;
 
 	/**
 	 * Launch the application.
@@ -29,7 +37,7 @@ public class CadastroCliente2 extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CadastroCliente2 frame = new CadastroCliente2();
+					CadastroPessoaFisicaView frame = new CadastroPessoaFisicaView();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +49,8 @@ public class CadastroCliente2 extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public CadastroCliente2() {
+	public CadastroPessoaFisicaView() {
+		this.cadastroPessoafController = new CadastroPessoafController(this);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -81,6 +90,10 @@ public class CadastroCliente2 extends JFrame {
 		lblNewLabel_1_1_1.setFont(new Font("Arial", Font.PLAIN, 12));
 		
 		JButton btnNewButton = new JButton("ENTRAR");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnNewButton.setFont(new Font("Arial", Font.PLAIN, 12));
 		btnNewButton.setBounds(33, 195, 96, 23);
 		panel.add(btnNewButton);
@@ -92,15 +105,20 @@ public class CadastroCliente2 extends JFrame {
 		contentPane.add(lblCriarConta);
 		
 		JLabel lblNewLabel_1_1_2 = new JLabel("Preencha seus dados");
-		lblNewLabel_1_1_2.setForeground(new Color(40, 40, 40));
+		lblNewLabel_1_1_2.setForeground(new Color(145, 145, 145));
 		lblNewLabel_1_1_2.setFont(new Font("Arial", Font.PLAIN, 12));
-		lblNewLabel_1_1_2.setBounds(234, 55, 122, 14);
+		lblNewLabel_1_1_2.setBounds(234, 48, 122, 14);
 		contentPane.add(lblNewLabel_1_1_2);
 		
-		JButton btnContinuar = new JButton("CADASTRAR");
-		btnContinuar.setFont(new Font("Arial", Font.PLAIN, 12));
-		btnContinuar.setBounds(234, 233, 118, 23);
-		contentPane.add(btnContinuar);
+		JButton btnCadastrar = new JButton("CADASTRAR");
+		btnCadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cadastroPessoafController.cadastrar();
+			}
+		});
+		btnCadastrar.setFont(new Font("Arial", Font.PLAIN, 12));
+		btnCadastrar.setBounds(234, 233, 118, 23);
+		contentPane.add(btnCadastrar);
 		
 		txtNome = new JTextField();
 		txtNome.addFocusListener(new FocusAdapter() {
@@ -108,7 +126,7 @@ public class CadastroCliente2 extends JFrame {
 			public void focusGained(FocusEvent e) {
 				if(txtNome.getText().equals("Nome")) {
 					txtNome.setText("");
-					txtNome.setForeground(new Color(154, 154, 154));
+					txtNome.setForeground(new Color(0, 0, 0));
 				}
 			}
 			@Override
@@ -116,7 +134,7 @@ public class CadastroCliente2 extends JFrame {
 				if(txtNome.getText().equals("")) {
 					txtNome.setText("Nome");
 					txtNome.setForeground(new Color(154, 154, 154));
-				}
+				} 
 			}
 		});
 		txtNome.setForeground(new Color(154, 154, 154));
@@ -128,31 +146,31 @@ public class CadastroCliente2 extends JFrame {
 		contentPane.add(txtNome);
 		txtNome.setColumns(10);
 		
-		txtEmailcnpj = new JTextField();
-		txtEmailcnpj.addFocusListener(new FocusAdapter() {
+		txtEmail = new JTextField();
+		txtEmail.addFocusListener(new FocusAdapter() {
 			@Override
 			public void focusGained(FocusEvent e) {
-				if(txtEmailcnpj.getText().equals("E-mail/CNPJ")) {
-					txtEmailcnpj.setText("");
-					txtEmailcnpj.setForeground(new Color(154, 154, 154));
+				if(txtEmail.getText().equals("E-mail")) {
+					txtEmail.setText("");
+					txtEmail.setForeground(new Color(0, 0, 0));
 				}
 			}
 			@Override
 			public void focusLost(FocusEvent e) {
-				if(txtEmailcnpj.getText().equals("")) {
-					txtEmailcnpj.setText("E-mail/CNPJ");
-					txtEmailcnpj.setForeground(new Color(154, 154, 154));
+				if(txtEmail.getText().equals("")) {
+					txtEmail.setText("E-mail");
+					txtEmail.setForeground(new Color(154, 154, 154));
 				}
 			}
 		});
-		txtEmailcnpj.setForeground(new Color(154, 154, 154));
-		txtEmailcnpj.setFont(new Font("Arial", Font.PLAIN, 12));
-		txtEmailcnpj.setText("E-mail/CNPJ");
-		txtEmailcnpj.setToolTipText("");
-		txtEmailcnpj.setColumns(10);
-		txtEmailcnpj.setBackground(new Color(223, 223, 223));
-		txtEmailcnpj.setBounds(200, 137, 193, 31);
-		contentPane.add(txtEmailcnpj);
+		txtEmail.setForeground(new Color(154, 154, 154));
+		txtEmail.setFont(new Font("Arial", Font.PLAIN, 12));
+		txtEmail.setText("E-mail");
+		txtEmail.setToolTipText("");
+		txtEmail.setColumns(10);
+		txtEmail.setBackground(new Color(223, 223, 223));
+		txtEmail.setBounds(200, 137, 193, 31);
+		contentPane.add(txtEmail);
 		
 		txtSenha = new JTextField();
 		txtSenha.addFocusListener(new FocusAdapter() {
@@ -160,7 +178,7 @@ public class CadastroCliente2 extends JFrame {
 			public void focusGained(FocusEvent e) {
 				if(txtSenha.getText().equals("Senha")) {
 					txtSenha.setText("");
-					txtSenha.setForeground(new Color(154, 154, 154));
+					txtSenha.setForeground(new Color(0, 0, 0));
 				}
 			}
 			@Override
@@ -179,5 +197,37 @@ public class CadastroCliente2 extends JFrame {
 		txtSenha.setBackground(new Color(223, 223, 223));
 		txtSenha.setBounds(200, 179, 193, 31);
 		contentPane.add(txtSenha);
+		
+		JLabel lblNewLabel_1_1_2_1 = new JLabel("Pessoa Física");
+		lblNewLabel_1_1_2_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1_1_2_1.setForeground(new Color(40, 40, 40));
+		lblNewLabel_1_1_2_1.setFont(new Font("Arial", Font.PLAIN, 12));
+		lblNewLabel_1_1_2_1.setBounds(234, 70, 122, 14);
+		contentPane.add(lblNewLabel_1_1_2_1);
 	}
+
+		public JTextField getTxtNome() {
+			return txtNome;
+		}
+	
+		public void setTxtNome(JTextField txtNome) {
+			this.txtNome = txtNome;
+		}
+	
+		public JTextField getTxtEmail() {
+			return txtEmail;
+		}
+	
+		public void setTxtEmail(JTextField txtEmail) {
+			this.txtEmail = txtEmail;
+		}
+	
+		public JTextField getTxtSenha() {
+			return txtSenha;
+		}
+	
+		public void setTxtSenha(JTextField txtSenha) {
+			this.txtSenha = txtSenha;
+		}
+	
 }

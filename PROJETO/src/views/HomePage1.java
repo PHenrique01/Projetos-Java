@@ -23,8 +23,10 @@ import java.awt.Canvas;
 import javax.swing.JButton;
 import javax.swing.JTextPane;
 import javax.swing.JRadioButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class TesteHomePage extends JFrame {
+public class HomePage1 extends JFrame {
 
 	private JPanel contentPane;
 
@@ -35,7 +37,7 @@ public class TesteHomePage extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TesteHomePage frame = new TesteHomePage();
+					HomePage1 frame = new HomePage1();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,11 +49,11 @@ public class TesteHomePage extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TesteHomePage() {
+	public HomePage1() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 400);
 		contentPane = new JPanel();
-		contentPane.setBackground(new Color(53, 53, 53));
+		contentPane.setBackground(new Color(255, 255, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
@@ -71,43 +73,49 @@ public class TesteHomePage extends JFrame {
 		lblNewLabel.setFont(new Font("Arial", Font.BOLD, 20));
 		panel.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Fazer o seguro");
-		lblNewLabel_1.setFont(new Font("Arial", Font.BOLD, 14));
-		lblNewLabel_1.setForeground(new Color(255, 255, 255));
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(10, 107, 210, 45);
-		panel.add(lblNewLabel_1);
+		JButton btnLogin = new JButton("Fazer Login");
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				LoginClienteView loginCliente = new LoginClienteView();
+				loginCliente.setVisible(true);
+				setVisible(false);
+			}
+		});
+		btnLogin.setFont(new Font("Arial", Font.PLAIN, 14));
+		btnLogin.setBounds(52, 303, 120, 23);
+		panel.add(btnLogin);
 		
-		JLabel lblNewLabel_1_1 = new JLabel("Serviços adicionais");
-		lblNewLabel_1_1.setBackground(new Color(255, 255, 255));
-		lblNewLabel_1_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1_1.setForeground(Color.WHITE);
-		lblNewLabel_1_1.setFont(new Font("Arial", Font.BOLD, 14));
-		lblNewLabel_1_1.setBounds(10, 163, 210, 45);
-		panel.add(lblNewLabel_1_1);
+		JButton btnNewButton_1 = new JButton("Atendimento");
+		btnNewButton_1.setForeground(new Color(255, 255, 255));
+		btnNewButton_1.setBackground(new Color(21, 21, 21));
+		btnNewButton_1.setFont(new Font("Arial", Font.PLAIN, 12));
+		btnNewButton_1.setBounds(52, 231, 120, 23);
+		panel.add(btnNewButton_1);
 		
-		JLabel lblNewLabel_1_2 = new JLabel("Atendimento");
-		lblNewLabel_1_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1_2.setForeground(Color.WHITE);
-		lblNewLabel_1_2.setFont(new Font("Arial", Font.BOLD, 14));
-		lblNewLabel_1_2.setBounds(10, 219, 210, 45);
-		panel.add(lblNewLabel_1_2);
+		JButton btnNewButton_2 = new JButton("Serviços adicionais");
+		btnNewButton_2.setForeground(new Color(255, 255, 255));
+		btnNewButton_2.setBackground(new Color(21, 21, 21));
+		btnNewButton_2.setFont(new Font("Arial", Font.PLAIN, 12));
+		btnNewButton_2.setBounds(52, 175, 120, 23);
+		panel.add(btnNewButton_2);
 		
-		JButton btnNewButton = new JButton("Fazer Login");
-		btnNewButton.setFont(new Font("Arial", Font.PLAIN, 14));
-		btnNewButton.setBounds(52, 303, 120, 23);
-		panel.add(btnNewButton);
+		JButton btnNewButton_3 = new JButton("Fazer o seguro");
+		btnNewButton_3.setForeground(new Color(255, 255, 255));
+		btnNewButton_3.setBackground(new Color(21, 21, 21));
+		btnNewButton_3.setFont(new Font("Arial", Font.PLAIN, 12));
+		btnNewButton_3.setBounds(52, 119, 120, 23);
+		panel.add(btnNewButton_3);
 		
 		JTextPane txtpnAaaaaaaaa = new JTextPane();
-		txtpnAaaaaaaaa.setForeground(new Color(255, 255, 255));
+		txtpnAaaaaaaaa.setForeground(new Color(21, 21, 21));
 		txtpnAaaaaaaaa.setText("O Seguro Auto é um conjunto de proteções oferecidas pela seguradora para resguardar o seu automóvel e evitar ou aliviar prejuízos financeiros decorrentes de imprevistos que causem alguns tipos de danos ao veículos.");
 		txtpnAaaaaaaaa.setFont(new Font("Arial", Font.PLAIN, 14));
-		txtpnAaaaaaaaa.setBackground(new Color(53, 53, 53));
+		txtpnAaaaaaaaa.setBackground(new Color(255, 255, 255));
 		txtpnAaaaaaaaa.setBounds(240, 79, 534, 62);
 		contentPane.add(txtpnAaaaaaaaa);
 		
 		JLabel lblNewLabel_2 = new JLabel("Seguro Auto");
-		lblNewLabel_2.setForeground(new Color(255, 255, 255));
+		lblNewLabel_2.setForeground(new Color(21, 21, 21));
 		lblNewLabel_2.setFont(new Font("Arial", Font.BOLD, 28));
 		lblNewLabel_2.setBackground(Color.WHITE);
 		lblNewLabel_2.setBounds(240, 35, 534, 33);
@@ -120,43 +128,36 @@ public class TesteHomePage extends JFrame {
 		contentPane.add(panel_1);
 		
 		JLabel lblNewLabel_2_1 = new JLabel("Algumas das coberturas mais contratadas no Seguro Auto");
-		lblNewLabel_2_1.setForeground(new Color(255, 255, 255));
+		lblNewLabel_2_1.setForeground(new Color(21, 21, 21));
 		lblNewLabel_2_1.setFont(new Font("Arial", Font.BOLD, 18));
 		lblNewLabel_2_1.setBackground(Color.WHITE);
 		lblNewLabel_2_1.setBounds(240, 182, 534, 33);
 		contentPane.add(lblNewLabel_2_1);
 		
 		JRadioButton rdbtnNewRadioButton = new JRadioButton("Danos a terceiros");
-		rdbtnNewRadioButton.setForeground(new Color(255, 255, 255));
-		rdbtnNewRadioButton.setBackground(new Color(53, 53, 53));
+		rdbtnNewRadioButton.setForeground(new Color(21, 21, 21));
+		rdbtnNewRadioButton.setBackground(new Color(255, 255, 255));
 		rdbtnNewRadioButton.setFont(new Font("Arial", Font.BOLD, 14));
 		rdbtnNewRadioButton.setBounds(240, 234, 150, 20);
 		contentPane.add(rdbtnNewRadioButton);
 		
-		JRadioButton rdbtnRouboEFurto = new JRadioButton("Roubo e Furto");
-		rdbtnRouboEFurto.setForeground(new Color(255, 255, 255));
-		rdbtnRouboEFurto.setBackground(new Color(53, 53, 53));
-		rdbtnRouboEFurto.setFont(new Font("Arial", Font.BOLD, 14));
-		rdbtnRouboEFurto.setBounds(240, 302, 150, 20);
-		contentPane.add(rdbtnRouboEFurto);
-		
 		JRadioButton rdbtnCoberturaDeColises = new JRadioButton("Cobertura de Colisões");
-		rdbtnCoberturaDeColises.setForeground(new Color(255, 255, 255));
-		rdbtnCoberturaDeColises.setBackground(new Color(53, 53, 53));
+		rdbtnCoberturaDeColises.setForeground(new Color(21, 21, 21));
+		rdbtnCoberturaDeColises.setBackground(new Color(255, 255, 255));
 		rdbtnCoberturaDeColises.setFont(new Font("Arial", Font.BOLD, 14));
-		rdbtnCoberturaDeColises.setBounds(365, 270, 184, 20);
+		rdbtnCoberturaDeColises.setBounds(524, 234, 184, 20);
 		contentPane.add(rdbtnCoberturaDeColises);
 		
 		JRadioButton rdbtnIncndioEDanos = new JRadioButton("Incêndio e danos da Natureza");
-		rdbtnIncndioEDanos.setForeground(new Color(255, 255, 255));
-		rdbtnIncndioEDanos.setBackground(new Color(53, 53, 53));
+		rdbtnIncndioEDanos.setForeground(new Color(21, 21, 21));
+		rdbtnIncndioEDanos.setBackground(new Color(255, 255, 255));
 		rdbtnIncndioEDanos.setFont(new Font("Arial", Font.BOLD, 14));
-		rdbtnIncndioEDanos.setBounds(524, 234, 234, 20);
+		rdbtnIncndioEDanos.setBounds(240, 302, 234, 20);
 		contentPane.add(rdbtnIncndioEDanos);
 		
 		JRadioButton rdbtnCoberturaDeDanos = new JRadioButton("Cobertura de danos a Vidros");
-		rdbtnCoberturaDeDanos.setForeground(new Color(255, 255, 255));
-		rdbtnCoberturaDeDanos.setBackground(new Color(53, 53, 53));
+		rdbtnCoberturaDeDanos.setForeground(new Color(21, 21, 21));
+		rdbtnCoberturaDeDanos.setBackground(new Color(255, 255, 255));
 		rdbtnCoberturaDeDanos.setFont(new Font("Arial", Font.BOLD, 14));
 		rdbtnCoberturaDeDanos.setBounds(524, 302, 234, 20);
 		contentPane.add(rdbtnCoberturaDeDanos);
