@@ -640,7 +640,7 @@ public class FazerSeguroPageView1 extends JFrame {
 		lblNewLabel_2_1_2_2_1_2.setBounds(214, 11, 95, 14);
 		panel_5_1.add(lblNewLabel_2_1_2_2_1_2);
 		
-		JButton btnFinalizar = new JButton("FINALIZAR");
+		JButton btnFinalizar = new JButton("CONTINUAR");
 		btnFinalizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				realizarSeguro1Controller.realizarSeguro();
@@ -719,5 +719,4 @@ public class FazerSeguroPageView1 extends JFrame {
 	public void setTextFimVigencia(JTextField textFimVigencia) {
 		this.TxtFimVigencia = textFimVigencia;
 	}
-	
 }
